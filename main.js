@@ -1,4 +1,4 @@
-const students = []
+const studentsArray = []
 
 //Renders to DOM when Called
 const renderToDom = (divId, textToPrint) => {
@@ -27,20 +27,20 @@ const startSorting = () => {
 const inputStudent = () => {
     const domString = 
         `
-        <form class="row g-3">
-  <div class="col-md-6">
-    <label class="form-label">First Name</label>
-    <input type="text" class="form-control" id="firstName">
-  </div>
-  <div class="col-md-6">
-    <label class="form-label">Last Name</label>
-    <input type="text" class="form-control" id="lastName">
-  </div>
+    <form class="row g-3">
+        <div class="col-md-6">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" required>
+        </div>
 
- <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sort!</button>
-  </div>
-</form>    
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Sort!</button>
+        </div>
+    </form>    
     `
 
     renderToDom('#formContainer', domString)
@@ -63,7 +63,7 @@ const randomHouse = () => {
 
 const handleInputStudentEvent = (event) => {
    
-    //event.preventDefault(); ***Not sure why it isnt working. ASK!
+    //event.preventDefault(); //***Not sure why it isnt working. ASK!
 
     const houseAssignment = randomHouse();
     const student = {
@@ -72,14 +72,28 @@ const handleInputStudentEvent = (event) => {
         house: randomHouse(),
         
     }
-    students.push(student);
-    houseList(students);
+    studentsArray.push(student);
+    houseList(studentsArray);
     inputStudent();
 }
 
 //Need to create. Takes students and renders them to DOM via Card input.
 const houseList = () => {
-        console.log(students);
+    let domString = ""; 
+    studentsArray.forEach((student, i) => {
+            domString += `
+              <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                 <div class="card-body">
+                    <h5 class="card-title">${student.firstName} ${student.lastName}</h5>
+                      <p class="card-text">of House ${student.house}</p>
+                    <a type="button" id="${i}" class="btn btn-primary">Expel</a>
+                 </div>
+             </div>
+            `;
+        });
+        renderToDom("#sortedContainer", domString);
+        //console.log(domSttring);
     }
     
 //Listens to Start Sorting button click and calls Input Student form to DOM
@@ -108,7 +122,7 @@ const inputStudentEvent = (event) => {
 const init = () => {
     startSorting();
     buttonEvents();
-    houseList();
+    houseList(studentsArray);
 };
 
 init()
