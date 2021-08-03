@@ -24,14 +24,25 @@ const startSorting = () => {
 }
 
 //Form that renders when startSorting's button is clicked.
-/*May need to try a new input form? Could be causing the error? Uses "Click" instead of "Submit" */
 const inputStudent = () => {
-    const domString = `
-    <div class="input-group mb-3">
-    <input id="studentsName" type="text" class="form-control" placeholder="Student's Name" aria-label="Student's Name" aria-describedby="button-addon2">
-    <button class="btn btn-outline-secondary" type="click" id="inputSubmit button-addon2">Sort!</button>
-    </div>
-    `;
+    const domString = 
+        `
+        <form class="row g-3">
+  <div class="col-md-6">
+    <label class="form-label">First Name</label>
+    <input type="text" class="form-control" id="firstName">
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="lastName">
+  </div>
+
+ <div class="col-12">
+    <button type="submit" class="btn btn-primary">Sort!</button>
+  </div>
+</form>    
+    `
+
     renderToDom('#formContainer', domString)
 }
 
@@ -48,19 +59,22 @@ const randomHouse = () => {
     }
 }
 
-//***Errors here: Supposed to take input from form and push it to the array with the random house.
+//Take input from form and pushes it to the array allong with the random house.
 
 const handleInputStudentEvent = (event) => {
-    // event.preventDefault();
+   
+    //event.preventDefault(); ***Not sure why it isnt working. ASK!
 
     const houseAssignment = randomHouse();
     const student = {
-        name: document.querySelector('#studentsName').value,
+        firstName: document.querySelector('#firstName').value,
+        lastName: document.querySelector('#lastName').value,
         house: randomHouse(),
+        
     }
     students.push(student);
     houseList(students);
-    console.log(students);
+    inputStudent();
 }
 
 //Need to create. Takes students and renders them to DOM via Card input.
@@ -72,16 +86,14 @@ const houseList = () => {
 const startingButtonClick = (event) => {
         const startingButtonEvent = document.querySelector('#sortingHat');
         startingButtonEvent.addEventListener('click', startSorting)
-        inputStudent();
-        console.log('clicked');
+        inputStudent();    
     }
 
 //Listens for handleInputStudentEvent and pushes input to the Array   
 const inputStudentEvent = (event) => {
         const inputStudentElement = document.querySelector('#formContainer');
-        inputStudentElement.addEventListener('click', inputStudent);
-        handleInputStudentEvent();
-        console.log('clicked');
+        inputStudentElement.addEventListener('submit', inputStudent);
+        handleInputStudentEvent();       
     }
     
       
@@ -89,14 +101,14 @@ const inputStudentEvent = (event) => {
     const buttonEvents = () => {
         document.querySelector('#sortingHat').addEventListener('click', startingButtonClick)
 
-        document.querySelector('#formContainer').addEventListener('click', inputStudentEvent)
+        document.querySelector('#formContainer').addEventListener('submit', inputStudentEvent)
     }
     
 //Initializes the App
 const init = () => {
     startSorting();
     buttonEvents();
-    //handleInputStudentEvent();
+    houseList();
 };
 
 init()
