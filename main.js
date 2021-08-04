@@ -11,12 +11,9 @@ const renderToDom = (divId, textToPrint) => {
 const startSorting = () => {
     const domString = `
     <div id="" class="card">
-    <div class="card-header">
-      Featured
-    </div>
     <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <h5 class="card-title">Welcome to the Hogwarts House Sorting Ceremony!</h5>
+      <p class="card-text">Please begin by clicking below.</p>
       <button class="btn btn-primary">Start Sorting</button>
     </div>
   </div>

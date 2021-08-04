@@ -2,6 +2,10 @@ body {
     background-color: #757575;
 }
 
+.card-body {
+    text-align: center;
+}
+
 .card {
     background-color: #D32F2F;
     color: #8BC34A;
