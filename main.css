@@ -1,3 +1,24 @@
 body {
-    background-color: bisque;
+    background-color: #757575;
+}
+
+.card {
+    background-color: #D32F2F;
+    color: #8BC34A;
+}
+
+.cardStyles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.houseStyle, .voldyStyle {
+    flex-basis: auto;
+    margin: 15px;
+}
+
+.card1, .card2 {
+    background-color: #FFFFFF;
+
 }
