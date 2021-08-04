@@ -1,4 +1,5 @@
-const studentsArray = []
+const studentsArray = [];
+let voldysArray = [];
 
 //Renders to DOM when Called
 const renderToDom = (divId, textToPrint) => {
@@ -77,7 +78,7 @@ const handleInputStudentEvent = (event) => {
     inputStudent();
 }
 
-//Need to create. Takes students and renders them to DOM via Card input.
+//Takes students and renders them to DOM via Card input.
 const houseList = () => {
     let domString = ""; 
     studentsArray.forEach((student, i) => {
@@ -93,7 +94,40 @@ const houseList = () => {
             `;
         });
         renderToDom("#sortedContainer", domString);
-        //console.log(domSttring);
+        console.log(studentsArray);
+    }
+
+//Expels students from Hogwarts and adds them to Voldy's Army.
+const expelFunction = (event) => {
+    
+    const targetType = event.target.type;
+    const targetId = event.target.id;
+
+    if(targetType === "button") {
+        voldysArray.push(studentsArray.splice(targetId, 1)[0]);      
+        armyList(voldysArray);
+        houseList();  
+    };
+}
+
+//Takes Voldy's Army and renders them to DOM via Card input.
+const armyList = () => {
+    let domString = ""; 
+    voldysArray.forEach((soldier, i) => {
+            domString += `
+              <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                 <div class="card-body">
+                    <h5 class="card-title">${soldier.firstName} ${soldier.lastName}</h5>
+                      <p class="card-text">Soldier for Voldy</p>
+                    
+                 </div>
+             </div>
+            `;
+            // <a type="button" id="${i}" class="btn btn-primary">Expel</a>
+        });
+        renderToDom("#voldysContainer", domString);
+        console.log(voldysArray);
     }
     
 //Listens to Start Sorting button click and calls Input Student form to DOM
@@ -116,6 +150,8 @@ const inputStudentEvent = (event) => {
         document.querySelector('#sortingHat').addEventListener('click', startingButtonClick)
 
         document.querySelector('#formContainer').addEventListener('submit', inputStudentEvent)
+
+        document.querySelector("#sortedContainer").addEventListener("click", expelFunction);
     }
     
 //Initializes the App
@@ -123,6 +159,7 @@ const init = () => {
     startSorting();
     buttonEvents();
     houseList(studentsArray);
+    armyList(voldysArray);
 };
 
 init()
