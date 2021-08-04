@@ -63,14 +63,13 @@ const randomHouse = () => {
 //Take input from form and pushes it to the array allong with the random house.
 
 const handleInputStudentEvent = (event) => {
-   
-    //event.preventDefault(); //***Not sure why it isnt working. ASK!
 
     const houseAssignment = randomHouse();
     const student = {
         firstName: document.querySelector('#firstName').value,
         lastName: document.querySelector('#lastName').value,
-        house: randomHouse(),
+        house: houseAssignment,
+        //color: 
         
     }
     studentsArray.push(student);
@@ -83,7 +82,7 @@ const houseList = () => {
     let domString = ""; 
     studentsArray.forEach((student, i) => {
             domString += `
-              <div class="card" style="width: 18rem;">
+              <div class="card1" style="width: 18rem;">
                 <img src="..." class="card-img-top" alt="...">
                  <div class="card-body">
                     <h5 class="card-title">${student.firstName} ${student.lastName}</h5>
@@ -94,7 +93,6 @@ const houseList = () => {
             `;
         });
         renderToDom("#sortedContainer", domString);
-        console.log(studentsArray);
     }
 
 //Expels students from Hogwarts and adds them to Voldy's Army.
@@ -115,7 +113,7 @@ const armyList = () => {
     let domString = ""; 
     voldysArray.forEach((soldier, i) => {
             domString += `
-              <div class="card" style="width: 18rem;">
+              <div class="card2" style="width: 18rem;">
                 <img src="..." class="card-img-top" alt="...">
                  <div class="card-body">
                     <h5 class="card-title">${soldier.firstName} ${soldier.lastName}</h5>
@@ -124,10 +122,8 @@ const armyList = () => {
                  </div>
              </div>
             `;
-            // <a type="button" id="${i}" class="btn btn-primary">Expel</a>
         });
         renderToDom("#voldysContainer", domString);
-        console.log(voldysArray);
     }
     
 //Listens to Start Sorting button click and calls Input Student form to DOM
