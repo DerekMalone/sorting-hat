@@ -13,17 +13,30 @@ body {
 
 .cardStyles {
     display: flex;
-    justify-content: space-around;
 }
 
-.houseStyle, .voldyStyle {
+.houseStyle {
+    display: flex;
     flex-basis: auto;
     flex-wrap: wrap;
     width: 50%;
+    justify-content: space-around;
 }
 
-.card1, .card2 {
-    background-color: #FFFFFF;
+.voldyStyle {
+    display: flex;
+    flex-basis: auto;
+    flex-wrap: wrap;
+    width: 50%;
+    justify-content: space-around;
+}
+
+.card1 {
     width: 40%;
-    /* margin: 5px; */
+    
+}
+.card2 {
+    width: 40%;
+    background-color: white;
+    border: black solid 3px;
 }
