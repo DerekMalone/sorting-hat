@@ -57,18 +57,45 @@ const randomHouse = () => {
     }
 }
 
+// //Takes randomHouse and assigns a color based on the house.
+const assignHouseColor = (house) => {
+    
+    if (house === 'Griffandor') {
+        return '#AE0001';
+    } else if (house === 'HufflePuff') {
+        return '#ffcc00';
+    } else {
+        return '#006600';
+    }
+}
+
+//Takes randomHouse and assigns an image based on the assigned house
+const assignImage = (house) => {
+    
+    if (house === 'Griffandor') {
+        return 'https://thenichollsworth.com/wp-content/uploads/2020/11/C0441055-AEE4-4C0D-8F43-A708DDEB6C3B-721x900.jpeg';
+    } else if (house === 'HufflePuff') {
+        return 'https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88364/91134/Harry-Potter-Hufflepuff-Crest-Official-wall-mounted-cardboard-cutout-buy-now-at-star__21122.1507644096.jpg?c=2';
+    } else {
+        return 'https://i.pinimg.com/originals/de/d8/7e/ded87e4b3dad3327988511af87724206.jpg';
+    }
+}
+
 //Take input from form and pushes it to the array allong with the random house.
-
 const handleInputStudentEvent = (event) => {
-
+    
     const houseAssignment = randomHouse();
+    const houseColor = assignHouseColor(houseAssignment);
+    const houseImage = assignImage(houseAssignment);
+
     const student = {
         firstName: document.querySelector('#firstName').value,
         lastName: document.querySelector('#lastName').value,
         house: houseAssignment,
-        //color: 
+        color: houseColor,
+        imageUrl: houseImage,
         
-    }
+    };
     studentsArray.push(student);
     houseList(studentsArray);
     inputStudent();
@@ -79,8 +106,8 @@ const houseList = () => {
     let domString = ""; 
     studentsArray.forEach((student, i) => {
             domString += `
-              <div class="card1" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+              <div class="card1" style="width: 18rem; background-color: ${student.color}">
+                <img src="${student.imageUrl}" class="card-img-top" alt="${student.house}">
                  <div class="card-body">
                     <h5 class="card-title">${student.firstName} ${student.lastName}</h5>
                       <p class="card-text">of House ${student.house}</p>
@@ -111,7 +138,7 @@ const armyList = () => {
     voldysArray.forEach((soldier, i) => {
             domString += `
               <div class="card2" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="https://m.media-amazon.com/images/I/61j8BksetiL._SL1383_.jpg" class="card-img-top" alt="deatheater image">
                  <div class="card-body">
                     <h5 class="card-title">${soldier.firstName} ${soldier.lastName}</h5>
                       <p class="card-text">Soldier for Voldy</p>
