@@ -99,7 +99,6 @@ const handleInputStudentEvent = (event) => {
     studentsArray.push(student);
     houseList(studentsArray);
     inputStudent();
-    console.log(studentsArray);
 }
 
 //Takes students and renders them to DOM via Card input.
