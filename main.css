@@ -23,6 +23,6 @@ body {
 }
 
 .card1, .card2 {
-    background-color: #FFFFFF;
-
+    /* background-color: #FFFFFF; */
+    width: calc(50% - 30px);
 }
