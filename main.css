@@ -26,7 +26,6 @@ body {
 
 .voldyStyle {
     display: flex;
-    /* flex-basis: auto; */
     flex-wrap: wrap;
     width: 50%;
     justify-content: space-around;
