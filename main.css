@@ -21,6 +21,8 @@ body {
     flex-wrap: wrap;
     width: 50%;
     justify-content: space-around;
+    align-content: flex-start;
+
 }
 
 .voldyStyle {
@@ -29,7 +31,7 @@ body {
     flex-wrap: wrap;
     width: 50%;
     justify-content: space-around;
-
+    align-content: flex-start;
 }
 
 .card1 {
