@@ -9,15 +9,16 @@ const renderToDom = (divId, textToPrint) => {
 
 //Header that is called when application is launched. 
 const startSorting = () => {
-    const domString = `
-    <div id="" class="card">
-    <div class="card-body">
-      <h5 class="card-title">Welcome to the Hogwarts House Sorting Ceremony!</h5>
-      <p class="card-text">Please begin by clicking below.</p>
-      <button class="btn btn-primary">Start Sorting</button>
-    </div>
-  </div>
-    `;
+    const domString = 
+      `
+        <div id="" class="card">
+        <div class="card-body">
+        <h5 class="card-title">Welcome to the Hogwarts House Sorting Ceremony!</h5>
+        <p class="card-text">Please begin by clicking below.</p>
+        <button class="btn btn-primary">Start Sorting</button>
+        </div>
+        </div>
+      `;
     renderToDom('#sortingHat', domString);
 }
 
@@ -25,21 +26,21 @@ const startSorting = () => {
 const inputStudent = () => {
     const domString = 
         `
-    <form class="row g-3">
-        <div class="col-md-6">
-            <label class="form-label">First Name</label>
-            <input type="text" class="form-control" id="firstName" required>
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="lastName" required>
-        </div>
+        <form class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" required>
+            </div>
 
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Sort!</button>
-        </div>
-    </form>    
-    `
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Sort!</button>
+            </div>
+        </form>    
+        `
 
     renderToDom('#formContainer', domString)
 }
@@ -105,7 +106,8 @@ const handleInputStudentEvent = (event) => {
 const houseList = () => {
     let domString = ""; 
     studentsArray.forEach((student, i) => {
-            domString += `
+            domString += 
+            `
               <div class="card1" style="width: 18rem; background-color: ${student.color}">
                 <img src="${student.imageUrl}" class="card-img-top" alt="${student.house}">
                  <div class="card-body">
@@ -113,7 +115,7 @@ const houseList = () => {
                       <p class="card-text">of House ${student.house}</p>
                     <a type="button" id="${i}" class="btn btn-primary">Expel</a>
                  </div>
-             </div>
+              </div>
             `;
         });
         renderToDom("#sortedContainer", domString);
@@ -136,7 +138,8 @@ const expelFunction = (event) => {
 const armyList = () => {
     let domString = ""; 
     voldysArray.forEach((soldier, i) => {
-            domString += `
+            domString += 
+            `
               <div class="card2" style="width: 18rem; background-color=white">
                 <img src="https://m.media-amazon.com/images/I/61j8BksetiL._SL1383_.jpg" class="card-img-top" alt="deatheater image">
                  <div class="card-body">
@@ -144,7 +147,7 @@ const armyList = () => {
                       <p class="card-text">Soldier for Voldy</p>
                     
                  </div>
-             </div>
+              </div>
             `;
         });
         renderToDom("#voldysContainer", domString);

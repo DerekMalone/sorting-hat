@@ -22,23 +22,14 @@ body {
     width: 50%;
     justify-content: space-around;
     align-content: flex-start;
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/main
 }
 
 .voldyStyle {
     display: flex;
-    /* flex-basis: auto; */
     flex-wrap: wrap;
     width: 50%;
     justify-content: space-around;
     align-content: flex-start;
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/main
 }
 
 .card1 {
